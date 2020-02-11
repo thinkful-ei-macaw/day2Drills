@@ -6,28 +6,38 @@
 
 
 /*
-In this drill, you need to write code for the createMyObject function so that it returns an object with the following key value pairs:
+In this drill, you need to write code for the createMyObject function so that it returns an
+ object with the following key value pairs:
 
 foo => 'bar'
 answerToUniverse => 42
 olly olly => 'oxen free'
 sayHello => a function that returns the string 'hello'
 */
-
+//SRM
 function createMyObject() {
-
+    const myObject = {
+        foo: 'bar',
+        answerToUniverse: 42,
+        'olly olly': 'oxen free',
+        sayHello(){
+            return 'hello';
+        }
+    };
+     return myObject;
 }
-
+console.log(createMyObject());
 
 
 /*
-Modify the updateObject function (which takes a single argument (obj)) so that it adds the following key/value pairs to obj and returns it:
+Modify the updateObject function (which takes a single argument (obj)) so that it adds the following 
+key/value pairs to obj and returns it:
 
 foo => 'foo'
 bar => 'bar'
 bizz => 'bizz'
 bang => 'bang'
-*/
+
 
 let obj = {};
 function updateObject(obj) {
@@ -40,29 +50,34 @@ return obj;
 console.log(updateObject(obj));
 
 
-
+*/
 
 
 
 
 /*
-Modify personMaker.fullName to be a function that uses self-reference (via this) in order to return the firstName and lastName properties separated by a space.
+Modify personMaker.fullName to be a function that uses self-reference (via this) in order to return the 
+firstName and lastName properties separated by a space.
 
 So, for instance, if firstName was 'Jane' and lastName was 'Doe', fullName() should return 'Jane Doe'.
 */
-
+//SRM
+/* 
 function personMaker() {
     var person = {
       firstName: 'Paul',
       lastName: 'Jones',
       // replace `null` with a function that uses self reference to return
       // full name
-      fullName: null,
+      fullName: function fName(){
+       return this.firstName + ' ' + this.lastName;
+        
+      }
     };
     return person;
   }
 // test code included in original, don't need to edit
-/*
+
   (function testPersonMaker() {
     var person = personMaker();
     if (typeof person !== 'object') {
@@ -90,17 +105,17 @@ function personMaker() {
           person.fullName()
       );
     }
-    console.log('SUCCESS: `updateObject` works correctly!');
+    console.log('SUCCESS: `personMaker` works correctly!');
   })();
-*/
 
 
 
 
-/*  Modify the keyDeleter function so that it deletes keys for foo and 
+
+ Modify the keyDeleter function so that it deletes keys for foo and 
   bar for any object passed in and then returns the modified object.
   */
-
+ /*
  const sampleObj = {
     foo: 'foo',
     bar: 'bar',
@@ -117,7 +132,7 @@ function personMaker() {
 
   //test code included in original, don't need to edit
 
-  
+ 
   (function testKeyDeleter() {
     var obj = keyDeleter({
       foo: 'foo',
@@ -160,15 +175,19 @@ looks like this: '[name]: [grade]'. The name and grade values on the student obj
 substituted in.
 
 */
-
-function makeStudentReport(data){
-
+/*
+function makeStudentsReport(data){
+const array = [];
+data.forEach(student => 
+  array.push(`${student.name}: ${student.grade}`)
+  );
+  console.log(array);
+return array;
 }
 
 
-
   //test code included in original, don't need to edit
-/*
+
 function testIt() {
     const testData = [
       { name: 'Jane Doe', grade: 'A' },
@@ -210,12 +229,12 @@ function testIt() {
   }
   
   testIt();
-*/  
 
 
 
 
-/*
+
+
 write a function called enrollInSummerSchool that takes a single argument, students. students 
 is an array of objects, with each object representing a student — for example, 
 {name: 'Tim', status: 'Current student', course: 'Biology'}.
@@ -251,7 +270,7 @@ So, given this input:
     course: 'Mathematics'
   },
 ];
- */
+ 
 
 const studentData = [
     {
@@ -340,7 +359,7 @@ items and idNum. items is an array of objects. idNum is the id we're trying to
 find in items. The function should look for an item with the id idNum in the array items. 
 If found, it should return that item.
 */
-
+/*
 const scratchData = [
     { id: 22, foo: 'bar' },
     { id: 28, foo: 'bizz' },
@@ -349,11 +368,22 @@ const scratchData = [
   
   function findById(items, idNum) {
 
+    let result = [];
+ for (let i = 0; i < items.length; i++) {
+   if (items[i].id === idNum){
+   result = items[i]}
 }
+
+
+
+return result;
+}
+
+console.log(findById(scratchData, 28));
 
    //test code included in original, don't need to edit
 
-   /*
+   
    function testIt() {
   const testData = [
     { id: 1, foo: 'bar' },
@@ -381,11 +411,11 @@ const scratchData = [
 }
 
 testIt();
-*/
 
 
 
-/*
+
+
 writing a function called validateKeys. This function takes 2 arguments, object and expectedKeys.
  object is (you guessed it!) an object that we want to validate keys for. expectedKeys is an array
   of keys that we expect to find on the object.
@@ -416,12 +446,21 @@ const objectA = {
   const expectedKeys = ['id', 'name', 'age', 'city'];
   
   function validateKeys(object, expectedKeys) {
-    
   
+    let obKeys = Object.keys(object);
+    
+    for(let i = 0; i < expectedKeys.length; i++ ){
+      if(obKeys[i] !== expectedKeys[i] || expectedKeys.length !== obKeys.length){
+        return false;
+      }
+    }
+      return true;
   }
 
+ 
+
      //test code included in original, don't need to edit
-/*
+
      function testIt() {
         const objectA = {
           id: 2,
@@ -502,4 +541,3 @@ const objectA = {
       }
       
       testIt();
-*/      
