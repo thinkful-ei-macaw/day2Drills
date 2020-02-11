@@ -29,9 +29,15 @@ bizz => 'bizz'
 bang => 'bang'
 */
 
+let obj = {};
 function updateObject(obj) {
-
+obj.foo = 'foo';
+obj.bar = "bar";
+obj.bizz = "bizz";
+obj.bang = "bang";
+return obj;
 }
+console.log(updateObject(obj));
 
 
 
@@ -103,13 +109,15 @@ function personMaker() {
   };
   
   function keyDeleter(obj) {
-    
+    delete obj.foo;
+    delete obj.bar;
+    return obj;
   }
 
 
   //test code included in original, don't need to edit
 
-  /*
+  
   (function testKeyDeleter() {
     var obj = keyDeleter({
       foo: 'foo',
@@ -136,7 +144,7 @@ function personMaker() {
     });
     console.log('SUCCESS: `keyDeleter` works correctly!');
   })();
-  */
+  
 
 
   // ***** SECOND SET OF DRILLS*******
@@ -264,13 +272,17 @@ const studentData = [
   ];
   
   function enrollInSummerSchool(students) {
+    return students.map(student => ({ 
+      name: student.name,
+      status: "In Summer School",
+      course: student.course,
+      }))
+    };
     
-  }
-
 
    //test code included in original, don't need to edit
 
-   /*
+   
    function testIt() {
   var testData = [
     {
@@ -319,7 +331,7 @@ const studentData = [
 }
 
 testIt();
-*/
+
 
 
 /*
@@ -404,7 +416,7 @@ const objectA = {
   const expectedKeys = ['id', 'name', 'age', 'city'];
   
   function validateKeys(object, expectedKeys) {
-    // your code goes here
+    
   
   }
 
